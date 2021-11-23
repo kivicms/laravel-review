@@ -6,10 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-    /**
-     * @var string
-     */
-    protected $connection = config('reviewrateable.connection');
 
     /**
      * @var string
@@ -20,6 +16,11 @@ class Rating extends Model
      * @var array
      */
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function __construct()
+    {
+        $this->connection = config('reviewrateable.connection');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
